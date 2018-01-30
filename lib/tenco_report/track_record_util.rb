@@ -85,6 +85,7 @@ module TencoReport
         end
         
         # 試合結果記録の読み込み
+        # 憑依華のデフォネームは空欄だが、相手が空欄の場合には対戦報告する
         sql = <<-SQL
           SELECT
             *
@@ -95,7 +96,7 @@ module TencoReport
             AND COALESCE(p1name, '') != ''
             AND p1id >= 0
             AND p1win >= 0
-            AND COALESCE(p2name, '') != ''
+            -- AND COALESCE(p2name, '') != ''
             AND p2id >= 0
             AND p2win >= 0
           ORDER BY
